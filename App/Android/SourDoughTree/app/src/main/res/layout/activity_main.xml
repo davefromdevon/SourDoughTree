@@ -9,52 +9,114 @@
     android:background="#FDEDD2"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/centerGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:padding="24dp">
 
-        <ImageView
-            android:id="@+id/logoImage"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:contentDescription="App Logo"
-            android:src="@drawable/sourdoughtreelogolarge"
-            android:scaleType="fitCenter" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/appTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SourdoughTree"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="#5E3A1C"
-            android:layout_marginTop="16dp" />
+            <LinearLayout
+                android:id="@+id/centerGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/tagline1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Every starter has a story."
-            android:textSize="16sp"
-            android:textColor="#6E4B2C"
-            android:layout_marginTop="12dp" />
+                <!-- Logo -->
+                <ImageView
+                    android:id="@+id/logoImage"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_marginBottom="16dp"
+                    android:contentDescription="App Logo"
+                    android:src="@drawable/sourdoughtreelogolarge"
+                    android:scaleType="fitCenter" />
 
-        <TextView
-            android:id="@+id/tagline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Every loaf has a lineage."
-            android:textSize="16sp"
-            android:textColor="#6E4B2C"
-            android:layout_marginTop="4dp" />
-    </LinearLayout>
+                <!-- App Title -->
+                <TextView
+                    android:id="@+id/appTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SourdoughTree"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="#5E3A1C"
+                    android:layout_marginBottom="12dp" />
 
+                <!-- Straplines -->
+                <TextView
+                    android:id="@+id/tagline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Every starter has a story."
+                    android:textSize="16sp"
+                    android:textColor="#6E4B2C"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/tagline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Every loaf has a lineage."
+                    android:textSize="16sp"
+                    android:textColor="#6E4B2C"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Username Field -->
+                <EditText
+                    android:id="@+id/usernameField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:backgroundTint="#6E4B2C"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:textColorHint="#888"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Password Field -->
+                <EditText
+                    android:id="@+id/passwordField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:backgroundTint="#6E4B2C"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:textColorHint="#888"
+                    android:layout_marginBottom="20dp" />
+
+                <!-- Login Button -->
+                <Button
+                    android:id="@+id/loginButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:backgroundTint="#6E4B2C"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Sign Up Link -->
+                <TextView
+                    android:id="@+id/signUpLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don't have an account? Sign up"
+                    android:textColor="#5E3A1C"
+                    android:textSize="14sp"
+                    android:textStyle="italic"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
