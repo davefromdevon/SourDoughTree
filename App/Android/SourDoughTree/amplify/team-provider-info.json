@@ -1,0 +1,15 @@
+{
+  "sdt": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sourdoughtree-sdt-2b92e-authRole",
+      "UnauthRoleArn": "arn:aws:iam::636461996847:role/amplify-sourdoughtree-sdt-2b92e-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::636461996847:role/amplify-sourdoughtree-sdt-2b92e-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-sourdoughtree-sdt-2b92e-deployment",
+      "UnauthRoleName": "amplify-sourdoughtree-sdt-2b92e-unauthRole",
+      "StackName": "amplify-sourdoughtree-sdt-2b92e",
+      "StackId": "arn:aws:cloudformation:eu-west-2:636461996847:stack/amplify-sourdoughtree-sdt-2b92e/0dbddd20-3583-11f0-bdd1-027eb8366afd",
+      "AmplifyAppId": "d2n01kfqw5kqtd"
+    }
+  }
+}
