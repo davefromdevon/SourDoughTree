@@ -6,6 +6,7 @@
 S3_BUCKET="sourdoughtree-cfn-templates"
 REGION="eu-west-2"
 STACK_NAME="sourdoughtree-stack"
+CUSTOM_DOMAIN="butter-api.sourdoughtree.com"
 
 # Change to the CloudFormation directory
 cd "$(dirname "$0")/../CloudFormation" || exit
@@ -33,16 +34,14 @@ aws cloudformation deploy \
   --stack-name $STACK_NAME \
   --parameter-overrides \
     ApiStageName=prod \
+    CustomDomainName=$CUSTOM_DOMAIN \
   --capabilities CAPABILITY_IAM
 
 echo "Deployment complete!"
 
 # Get the API Gateway URL from the stack outputs
 API_URL=$(aws cloudformation describe-stacks --stack-name $STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`ApiGatewayUrl`].OutputValue' --output text)
+CUSTOM_URL=$(aws cloudformation describe-stacks --stack-name $STACK_NAME --region $REGION --query 'Stacks[0].Outputs[?OutputKey==`CustomDomainUrl`].OutputValue' --output text)
 
 echo "API Gateway URL: $API_URL"
-echo ""
-echo "To map your custom domain to this API Gateway:"
-echo "1. Go to API Gateway Console"
-echo "2. Select 'Custom Domain Names'"
-echo "3. Create or update your mapping for 'butter-api.sourdoughtree.com' to point to the API and stage"
+echo "Custom Domain URL: $CUSTOM_URL"

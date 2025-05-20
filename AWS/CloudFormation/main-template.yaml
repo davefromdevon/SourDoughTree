@@ -6,6 +6,11 @@ Parameters:
     Type: String
     Default: prod
     Description: Name of the API Gateway stage
+    
+  CustomDomainName:
+    Type: String
+    Default: butter-api.sourdoughtree.com
+    Description: Name of the existing custom domain
 
 Resources:
   ApiGatewayStack:
@@ -14,8 +19,13 @@ Resources:
       TemplateURL: https://s3.amazonaws.com/sourdoughtree-cfn-templates/api-gateway.yaml
       Parameters:
         StageName: !Ref ApiStageName
+        CustomDomainName: !Ref CustomDomainName
 
 Outputs:
   ApiGatewayUrl:
     Description: URL of the API Gateway
     Value: !GetAtt ApiGatewayStack.Outputs.ApiUrl
+    
+  CustomDomainUrl:
+    Description: Custom domain URL for the API
+    Value: !GetAtt ApiGatewayStack.Outputs.CustomDomainUrl
