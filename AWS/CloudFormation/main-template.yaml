@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'SourDoughTree Main CloudFormation Template'
+
+Parameters:
+  ApiStageName:
+    Type: String
+    Default: prod
+    Description: Name of the API Gateway stage
+
+Resources:
+  ApiGatewayStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/sourdoughtree-cfn-templates/api-gateway.yaml
+      Parameters:
+        StageName: !Ref ApiStageName
+
+Outputs:
+  ApiGatewayUrl:
+    Description: URL of the API Gateway
+    Value: !GetAtt ApiGatewayStack.Outputs.ApiUrl

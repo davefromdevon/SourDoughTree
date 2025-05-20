@@ -1,0 +1,73 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'SourDoughTree API Gateway Template'
+
+Parameters:
+  StageName:
+    Type: String
+    Default: prod
+    Description: Name of the API Gateway stage
+
+Resources:
+  SourDoughTreeApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: SourDoughTreeApi
+      Description: API Gateway for SourDoughTree application
+      EndpointConfiguration:
+        Types:
+          - REGIONAL
+
+  ApiGatewayStage:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      DeploymentId: !Ref ApiDeployment
+      RestApiId: !Ref SourDoughTreeApi
+      StageName: !Ref StageName
+
+  ApiDeployment:
+    Type: AWS::ApiGateway::Deployment
+    DependsOn:
+      - RootMethodOptions
+    Properties:
+      RestApiId: !Ref SourDoughTreeApi
+      Description: Initial deployment for SourDoughTree API
+
+  RootMethodOptions:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref SourDoughTreeApi
+      ResourceId: !GetAtt SourDoughTreeApi.RootResourceId
+      HttpMethod: OPTIONS
+      AuthorizationType: NONE
+      Integration:
+        Type: MOCK
+        IntegrationResponses:
+          - StatusCode: 200
+            ResponseParameters:
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Methods: "'GET,POST,PUT,DELETE,OPTIONS'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+            ResponseTemplates:
+              application/json: ''
+        PassthroughBehavior: WHEN_NO_MATCH
+        RequestTemplates:
+          application/json: '{"statusCode": 200}'
+      MethodResponses:
+        - StatusCode: 200
+          ResponseParameters:
+            method.response.header.Access-Control-Allow-Headers: true
+            method.response.header.Access-Control-Allow-Methods: true
+            method.response.header.Access-Control-Allow-Origin: true
+
+Outputs:
+  ApiId:
+    Description: ID of the API Gateway REST API
+    Value: !Ref SourDoughTreeApi
+    Export:
+      Name: !Sub "${AWS::StackName}-ApiId"
+
+  ApiUrl:
+    Description: URL of the API Gateway
+    Value: !Sub "https://${SourDoughTreeApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}"
+    Export:
+      Name: !Sub "${AWS::StackName}-ApiUrl"
