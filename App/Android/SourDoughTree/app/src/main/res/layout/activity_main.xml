@@ -96,17 +96,28 @@
                     android:layout_marginBottom="20dp" />
 
                 <!-- Login Button -->
+
+                <!-- Sign Up Link -->
                 <Button
                     android:id="@+id/loginButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Login"
+                    android:layout_marginBottom="12dp"
                     android:backgroundTint="#6E4B2C"
+                    android:text="Login"
                     android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="12dp" />
+                    android:textStyle="bold" />
 
-                <!-- Sign Up Link -->
+                <Button
+                    android:id="@+id/logoutButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:backgroundTint="#6E4B2C"
+                    android:text="Logout"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/signUpLink"
                     android:layout_width="wrap_content"
