@@ -28,11 +28,32 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        //Check if logged in
+        Amplify.Auth.fetchAuthSession(
+            { result ->
+                if (result.isSignedIn) {
+                    runOnUiThread {
+                        Toast.makeText(this, "You're already signed in", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                else
+                {
+                    runOnUiThread {
+                        Toast.makeText(this, "You're not signed in", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            },
+            { error ->
+                Log.e("AuthSession", "Failed to fetch auth session", error)
+            }
+        )
+
+
+        //Add event handlers
         val loginButton = findViewById<Button>(R.id.loginButton)
         loginButton.setOnClickListener {
             handleLogin()
         }
-
 
         val logoutButton = findViewById<Button>(R.id.logoutButton)
         logoutButton.setOnClickListener {
