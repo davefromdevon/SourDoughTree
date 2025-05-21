@@ -10,6 +10,11 @@
       "StackName": "amplify-sourdoughtree-sdt-2b92e",
       "StackId": "arn:aws:cloudformation:eu-west-2:636461996847:stack/amplify-sourdoughtree-sdt-2b92e/0dbddd20-3583-11f0-bdd1-027eb8366afd",
       "AmplifyAppId": "d2n01kfqw5kqtd"
+    },
+    "categories": {
+      "auth": {
+        "sourdoughtree5f2e7b45": {}
+      }
     }
   }
 }

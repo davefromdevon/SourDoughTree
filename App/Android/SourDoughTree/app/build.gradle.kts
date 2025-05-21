@@ -50,6 +50,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     // Amplify core
     implementation("com.amplifyframework:core:2.24.0")
+    implementation("com.amplifyframework:aws-auth-cognito:2.24.0")
+
+
     // Support for Java 8 features
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
