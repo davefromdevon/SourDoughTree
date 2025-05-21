@@ -75,6 +75,10 @@
                     android:id="@+id/usernameField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:imeOptions="actionNone"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:inputType="text"
                     android:hint="Username"
                     android:backgroundTint="#6E4B2C"
                     android:padding="12dp"
@@ -87,8 +91,11 @@
                     android:id="@+id/passwordField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
+                    android:imeOptions="actionNone"
+                    android:maxLines="1"
+                    android:singleLine="true"
                     android:inputType="textPassword"
+                    android:hint="Password"
                     android:backgroundTint="#6E4B2C"
                     android:padding="12dp"
                     android:textColor="#000"
@@ -96,7 +103,11 @@
                     android:layout_marginBottom="20dp" />
 
                 <!-- Login Button -->
-
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/transparent" />
                 <!-- Sign Up Link -->
                 <Button
                     android:id="@+id/loginButton"

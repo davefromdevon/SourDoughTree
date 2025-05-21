@@ -1,22 +1,23 @@
 package com.sourdoughtree.android
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.amplifyframework.core.Amplify
 
 
-import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin
-import com.amplifyframework.AmplifyException
 import com.amplifyframework.auth.result.step.AuthSignInStep
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("ServiceCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -38,68 +39,13 @@ class MainActivity : AppCompatActivity() {
             signOut()
         }
 
-
-//        Amplify.Auth.fetchAuthSession(
-//            { result ->
-//                if (result.isSignedIn) {
-//                    Log.i("AuthCheck", "User is already signed in.")
-//                    // You could optionally sign them out or skip login
-//
-//                    Amplify.Auth.signOut {
-//                        Log.i("AuthCheck", "User signed out")
-//                    }
-//
-//
-//                } else {
-//                    Log.i("AuthCheck", "User not signed in. Proceeding with login.")
-//
-//
-//                    Amplify.Auth.signIn(
-//                        "davedixson@yahoo.com",
-//                        "NewPassword456!",
-//                        { result ->
-//                            if (result.isSignedIn) {
-//                                Log.i("AuthQuickStart", "Sign in succeeded")
-//                            } else {
-//                                val step = result.nextStep.signInStep
-//                                if (step == AuthSignInStep.CONFIRM_SIGN_IN_WITH_NEW_PASSWORD) {
-//                                    Log.i("Auth", "Must set new password")
-//
-//                                    Amplify.Auth.confirmSignIn(
-//                                        "NewPassword456!",
-//                                        { result ->
-//                                            if (result.isSignedIn) {
-//                                                Log.i("Auth", "Password changed and sign-in completed.")
-//                                            } else {
-//                                                Log.i("Auth", "Next step: ${result.nextStep.signInStep}")
-//                                            }
-//                                        },
-//                                        { error ->
-//                                            Log.e("Auth", "Failed to confirm sign-in with new password", error)
-//                                        }
-//                                    )
-//
-//
-//
-//                                }
-//                                else {
-//                                    Log.i("AuthQuickStart", "Sign in not complete")
-//                                    Log.i("AuthQuickStart", result.toString())
-//                                }
-//                            }
-//
-//                        },
-//                        { error ->
-//                            Log.e("AuthQuickStart", "Sign in failed", error)
-//                        }
-//                    )
-//
-//
-//                }
-//            },
-//            { error -> Log.e("AuthCheck", "Failed to fetch auth session", error) }
-//        )
-
+        val passwordField = findViewById<EditText>(R.id.passwordField)
+        passwordField.setOnEditorActionListener { _, _, _ ->
+            passwordField.clearFocus()
+            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(passwordField.windowToken, 0)
+            true
+        }
 
 
 
@@ -142,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 
                                     Amplify.Auth.confirmSignIn(
                                         "NewPassword456!",
-                                        { result ->
+                                        { signInResult ->
                                            if (result.isSignedIn) {
                                                 Log.i("Auth", "Password changed and sign-in completed.")
                                             } else {
