@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
 
                     Amplify.Auth.signIn(
-                        "newuser",
+                        "davedixson@yahoo.com",
                         "NewPassword456!",
                         { result ->
                             if (result.isSignedIn) {
