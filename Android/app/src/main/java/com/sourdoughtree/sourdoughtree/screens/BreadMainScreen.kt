@@ -46,7 +46,7 @@ fun BreadMainScreen() {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Our bakers are still kneading this page.",
+            text = "Our bakers are still kneading this page!",
             fontSize = 16.sp,
             color = Color(0xFF6E4B2C)
         )
