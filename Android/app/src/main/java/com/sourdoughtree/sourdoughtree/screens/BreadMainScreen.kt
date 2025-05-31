@@ -3,7 +3,6 @@ package com.sourdoughtree.sourdoughtree.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -46,7 +45,7 @@ fun BreadMainScreen() {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Our bakers are still kneading this page!!!",
+            text = "Our bakers are still kneading this page",
             fontSize = 16.sp,
             color = Color(0xFF6E4B2C)
         )
